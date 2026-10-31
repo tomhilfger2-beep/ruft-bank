@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings — RUFT Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main">
+        <header class="topbar" id="topbar"></header>
+        <main class="content">
+          <div class="page-head">
+            <div>
+              <h1>Settings</h1>
+              <p>Customize your RUFT experience.</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-palette"></i> Appearance</h3>
+              </div>
+              <ul class="settings-list">
+                <li>
+                  <div>
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div>
+                      <strong>Theme</strong
+                      ><small>Choose light, dark or system</small>
+                    </div>
+                  </div>
+                  <div class="theme-picker" id="themePicker">
+                    <button data-theme="light">
+                      <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <button data-theme="dark">
+                      <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button data-theme="system">
+                      <i class="fa-solid fa-desktop"></i>
+                    </button>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <i class="fa-solid fa-language"></i>
+                    <div>
+                      <strong>Language</strong><small>Interface language</small>
+                    </div>
+                  </div>
+                  <select id="langSelect" class="select">
+                    <option value="en">English</option>
+                    <option value="uz">O'zbek</option>
+                    <option value="ru">Русский</option>
+                  </select>
+                </li>
+                <li>
+                  <div>
+                    <i class="fa-solid fa-coins"></i>
+                    <div>
+                      <strong>Default Currency</strong
+                      ><small>Displayed across the app</small>
+                    </div>
+                  </div>
+                  <select id="currencySelect" class="select">
+                    <option>USD</option>
+                    <option>EUR</option>
+                    <option>UZS</option>
+                    <option>GBP</option>
+                  </select>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-lock"></i> Privacy & Security</h3>
+              </div>
+              <ul class="settings-list">
+                <li>
+                  <div>
+                    <i class="fa-solid fa-eye-slash"></i>
+                    <div>
+                      <strong>Hide balances</strong
+                      ><small>Mask sensitive amounts</small>
+                    </div>
+                  </div>
+                  <label class="switch"
+                    ><input type="checkbox" id="hideBalance" /><span></span
+                  ></label>
+                </li>
+                <li>
+                  <div>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                      <strong>Location services</strong
+                      ><small>For nearby ATMs</small>
+                    </div>
+                  </div>
+                  <label class="switch"
+                    ><input type="checkbox" checked /><span></span
+                  ></label>
+                </li>
+                <li>
+                  <div>
+                    <i class="fa-solid fa-cookie-bite"></i>
+                    <div>
+                      <strong>Analytics cookies</strong
+                      ><small>Help us improve</small>
+                    </div>
+                  </div>
+                  <label class="switch"
+                    ><input type="checkbox" checked /><span></span
+                  ></label>
+                </li>
+                <li>
+                  <div>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <div>
+                      <strong>Auto lock</strong
+                      ><small>Lock after inactivity</small>
+                    </div>
+                  </div>
+                  <select id="autoLock" class="select">
+                    <option>5 min</option>
+                    <option>15 min</option>
+                    <option>30 min</option>
+                    <option>Never</option>
+                  </select>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card danger-zone">
+            <div class="card-head">
+              <h3>
+                <i class="fa-solid fa-triangle-exclamation"></i> Danger Zone
+              </h3>
+            </div>
+            <ul class="settings-list">
+              <li>
+                <div>
+                  <i class="fa-solid fa-trash"></i>
+                  <div>
+                    <strong>Delete all data</strong
+                    ><small>Clear local demo data</small>
+                  </div>
+                </div>
+                <button class="btn btn-outline" id="clearDataBtn">
+                  Clear Data
+                </button>
+              </li>
+              <li>
+                <div>
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <div>
+                    <strong>Sign out</strong><small>End your session</small>
+                  </div>
+                </div>
+                <button class="btn btn-primary" id="logoutBtn">Sign Out</button>
+              </li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/settings.js"></script>
+      <script src="assets/js/animations.js"></script>
+  </body>
+</html>

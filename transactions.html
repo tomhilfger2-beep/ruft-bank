@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transactions — RUFT Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/tx-ui.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main">
+        <header class="topbar" id="topbar"></header>
+        <main class="content">
+          <div class="page-head">
+            <div>
+              <h1>Transactions</h1>
+              <p>Full history of your account activity.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline" id="exportCsv">
+                <i class="fa-solid fa-file-csv"></i> CSV
+              </button>
+              <button class="btn btn-outline" id="exportPdf">
+                <i class="fa-solid fa-file-pdf"></i> PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="tx-toolbar">
+              <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  id="txSearch"
+                  placeholder="Search transactions..."
+                />
+              </div>
+              <div class="filter-group">
+                <select id="txTypeFilter">
+                  <option value="">All types</option>
+                  <option value="income">Income</option>
+                  <option value="expense">Expense</option>
+                  <option value="transfer">Transfer</option>
+                </select>
+                <select id="txCategoryFilter">
+                  <option value="">All categories</option>
+                  <option>Food</option>
+                  <option>Shopping</option>
+                  <option>Transport</option>
+                  <option>Bills</option>
+                  <option>Entertainment</option>
+                  <option>Salary</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="table" id="txTable">
+                <thead>
+                  <tr>
+                    <th>Transaction</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="txBody"></tbody>
+              </table>
+            </div>
+            <div class="pagination" id="txPagination"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/transactions.js"></script>
+      <script src="assets/js/animations.js"></script>
+    <script src="assets/js/tx-ui.js"></script>
+  </body>
+</html>

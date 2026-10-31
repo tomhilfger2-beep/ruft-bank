@@ -1,0 +1,22 @@
+/* Til tanlagich */
+.lang-switch { position: relative; display: inline-block; }
+.lang-btn { height: 40px; padding: 0 12px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text); font: 600 .8rem "Plus Jakarta Sans", sans-serif; transition: all .2s; }
+.lang-btn:hover { background: var(--surface-2); color: var(--primary); }
+.lang-caret { font-size: .6rem; opacity: .6; transition: transform .25s; }
+.lang-switch.open .lang-caret { transform: rotate(180deg); }
+.lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 160px; list-style: none; margin: 0; padding: 6px; z-index: 3000;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 20px 40px -12px rgba(0,0,0,.35);
+  opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.96); transform-origin: top right; transition: all .22s cubic-bezier(.2,.8,.2,1); }
+.lang-switch.open .lang-menu { opacity: 1; visibility: visible; transform: none; }
+.lang-menu button { width: 100%; display: flex; align-items: center; gap: 10px; padding: 9px 12px; border: 0; border-radius: 10px; background: transparent; color: var(--text); cursor: pointer; font: 500 .85rem "Plus Jakarta Sans", sans-serif; text-align: left; }
+.lang-menu button b { width: 26px; font-size: .7rem; letter-spacing: 1px; opacity: .6; }
+.lang-menu button:hover { background: var(--surface-2); }
+.lang-menu button.active { color: var(--primary); background: rgba(99,102,241,.1); }
+.lang-switch.auth-lang { position: absolute; top: 24px; right: 76px; }
+.nav-actions .lang-switch { margin-right: 4px; }
+
+/* CSS ichidagi matnlar */
+html[lang="ru"] .credit-card.frozen::after { content: "🧊 ЗАМОРОЖЕНА"; }
+html[lang="uz"] .credit-card.frozen::after { content: "🧊 MUZLATILGAN"; }
+@media (max-width: 600px) { .lang-btn span { display: none; } .lang-switch.auth-lang { right: 72px; } }

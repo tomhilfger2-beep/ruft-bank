@@ -1,0 +1,16 @@
+/* Humo & Uzcard brands (qo'shimcha — mavjud stillarga tegilmagan) */
+.credit-card.brand-humo,   .preview-card.brand-humo   { background: linear-gradient(135deg, #064e3b 0%, #0f9d8a 55%, #34d399 125%); }
+.credit-card.brand-uzcard, .preview-card.brand-uzcard { background: linear-gradient(135deg, #0b1d5c 0%, #2563eb 60%, #38bdf8 125%); }
+
+.wm { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 4px; line-height: 1; }
+.wm-humo { font-size: 1.5rem; letter-spacing: 3px; }
+.wm-humo i { width: 9px; height: 9px; border-radius: 50%; background: #fb923c; box-shadow: 0 0 12px #fb923c; margin-top: 8px; display: inline-block; }
+.wm-uzcard { font-size: 1.3rem; font-style: italic; letter-spacing: 2px; padding: 3px 10px; border-radius: 8px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); }
+.card-brand .wm, .preview-brand .wm { filter: drop-shadow(0 3px 8px rgba(0,0,0,.35)); }
+
+.mini-wm { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; letter-spacing: 1.5px; font-size: .9rem; }
+.mini-wm.uzcard { font-style: italic; }
+.type-option .mini-wm.humo { color: #34d399; }
+.type-option .mini-wm.uzcard { color: #60a5fa; }
+.type-option .mini-wm { font-size: 1rem; }
+.mini-card-brand .mini-wm { color: #fff; font-size: .85rem; }

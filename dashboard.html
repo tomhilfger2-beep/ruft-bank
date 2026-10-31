@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — RUFT Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/brands.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main">
+        <header class="topbar" id="topbar"></header>
+        <main class="content">
+          <div class="page-head">
+            <div>
+              <h1 id="greeting">Good morning 👋</h1>
+              <p>Here's what's happening with your money today.</p>
+            </div>
+            <div class="page-actions">
+              <a href="transactions.html" class="btn btn-outline">
+                <i class="fa-solid fa-download"></i> Statement
+              </a>
+              <a href="transfer.html" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> New Transfer
+              </a>
+            </div>
+          </div>
+
+          <!-- Balance Cards -->
+          <div class="stat-grid">
+            <div class="stat-card gradient-1">
+              <div class="stat-top">
+                <i class="fa-solid fa-wallet"></i
+                ><span class="stat-badge positive">+12.4%</span>
+              </div>
+              <small>Total Balance</small>
+              <h2 id="statBalance">$0.00</h2>
+              <span class="stat-foot">All accounts combined</span>
+            </div>
+            <div class="stat-card gradient-2">
+              <div class="stat-top">
+                <i class="fa-solid fa-arrow-down"></i
+                ><span class="stat-badge positive">+8.1%</span>
+              </div>
+              <small>Monthly Income</small>
+              <h2 id="statIncome">$0.00</h2>
+              <span class="stat-foot">This month</span>
+            </div>
+            <div class="stat-card gradient-3">
+              <div class="stat-top">
+                <i class="fa-solid fa-arrow-up"></i
+                ><span class="stat-badge negative">-3.2%</span>
+              </div>
+              <small>Monthly Expense</small>
+              <h2 id="statExpense">$0.00</h2>
+              <span class="stat-foot">This month</span>
+            </div>
+            <div class="stat-card gradient-4">
+              <div class="stat-top">
+                <i class="fa-solid fa-piggy-bank"></i
+                ><span class="stat-badge positive">+5.6%</span>
+              </div>
+              <small>Savings</small>
+              <h2 id="statSavings">$0.00</h2>
+              <span class="stat-foot">Goal: $20,000</span>
+            </div>
+          </div>
+          <!-- Cards & Quick actions -->
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-credit-card"></i> My Cards</h3>
+                <a href="cards.html" class="link"
+                  >Manage <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+              <div class="mini-cards" id="dashCards"></div>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-bolt"></i> Quick Actions</h3>
+              </div>
+              <div class="quick-actions">
+                <a href="transfer.html" class="qa"
+                  ><i class="fa-solid fa-paper-plane"></i><span>Send</span></a
+                >
+                <a href="deposit.html" class="qa"
+                  ><i class="fa-solid fa-arrow-down"></i><span>Deposit</span></a
+                >
+                <a href="cards.html" class="qa"
+                  ><i class="fa-solid fa-credit-card"></i><span>Cards</span></a
+                >
+                <a href="transactions.html" class="qa"
+                  ><i class="fa-solid fa-receipt"></i><span>History</span></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Transactions & AI -->
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-receipt"></i> Recent Transactions</h3>
+                <a href="transactions.html" class="link">View all</a>
+              </div>
+              <div class="tx-list" id="recentTx"></div>
+            </div>
+            <div class="card ai-card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-robot"></i> AI Insights</h3>
+                <span class="badge">Live</span>
+              </div>
+              <div class="ai-insights" id="aiInsights"></div>
+            </div>
+          </div>
+
+          <!-- Exchange rates -->
+          <div class="card">
+            <div class="card-head">
+              <h3><i class="fa-solid fa-coins"></i> Live Exchange Rates</h3>
+              <small>Updated just now</small>
+            </div>
+            <div class="rates-grid" id="ratesGrid"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <button class="ai-fab" id="aiFab" title="Ask RUFT AI">
+      <i class="fa-solid fa-robot"></i>
+    </button>
+    <div class="ai-panel" id="aiPanel" hidden>
+      <div class="ai-panel-head">
+        <div><i class="fa-solid fa-robot"></i> RUFT AI Assistant</div>
+        <button id="aiClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="ai-panel-body" id="aiBody"></div>
+      <form class="ai-panel-input" id="aiForm">
+        <input
+          type="text"
+          id="aiInput"
+          placeholder="Ask about balance, spending, tips..."
+        />
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/ai.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+      <script src="assets/js/animations.js"></script>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account — RUFT Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="auth-body">
+    <div class="auth-wrap">
+      <div class="auth-side">
+        <a href="index.html" class="logo">
+          <div class="logo-mark"><i class="fa-solid fa-vault"></i></div>
+          <span>RUFT<span class="logo-accent">Bank</span></span>
+        </a>
+        <div class="auth-side-content">
+          <h2>Start your journey.</h2>
+          <p>
+            Open your RUFT account in under 2 minutes. No paperwork, no branches
+            — just beautiful banking.
+          </p>
+          <div class="auth-features">
+            <div><i class="fa-solid fa-credit-card"></i> Free premium card</div>
+            <div><i class="fa-solid fa-gift"></i> $50 welcome bonus</div>
+            <div><i class="fa-solid fa-robot"></i> AI financial assistant</div>
+          </div>
+        </div>
+        <div class="auth-side-blob"></div>
+      </div>
+      <div class="auth-form-wrap">
+        <button class="theme-toggle auth-theme" id="themeToggle">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="auth-form-card">
+          <div class="auth-head">
+            <h1>Create your account</h1>
+            <p>Let's get you set up in a minute</p>
+          </div>
+          <form id="registerForm" novalidate>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="regFirstName" placeholder="John" />
+                <small class="error-msg" id="regFirstNameError"></small>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="regLastName" placeholder="Doe" />
+                <small class="error-msg" id="regLastNameError"></small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <div class="input-with-icon">
+                <span class="input-prefix">+998</span>
+                <input
+                  type="tel"
+                  id="regPhone"
+                  placeholder="XX XXX XX XX"
+                  maxlength="12"
+                />
+              </div>
+              <small class="error-msg" id="regPhoneError"></small>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="input-with-icon">
+                <input
+                  type="password"
+                  id="regPassword"
+                  placeholder="Min 8 characters"
+                />
+                <button
+                  type="button"
+                  class="input-eye"
+                  data-target="regPassword"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+              <small class="error-msg" id="regPasswordError"></small>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <div class="input-with-icon">
+                <input
+                  type="password"
+                  id="regConfirm"
+                  placeholder="Re-enter password"
+                />
+                <button
+                  type="button"
+                  class="input-eye"
+                  data-target="regConfirm"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+              <small class="error-msg" id="regConfirmError"></small>
+            </div>
+            <label class="checkbox"
+              ><input type="checkbox" id="agreeTerms" /> I agree to the
+              <a href="#" class="link">Terms</a> and
+              <a href="#" class="link">Privacy Policy</a></label
+            >
+            <button type="submit" class="btn btn-primary btn-block">
+              Create Account <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <p class="auth-foot-link">
+              Already have an account?
+              <a href="login.html" class="link">Sign in</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div class="modal" id="otpModal" hidden>
+      <div class="modal-backdrop"></div>
+      <div class="modal-card otp-card">
+        <div class="otp-icon">
+          <i class="fa-solid fa-envelope-circle-check"></i>
+        </div>
+        <h2>Verify your phone</h2>
+        <p>We sent a 6-digit code to <strong id="otpPhoneDisplay"></strong></p>
+        <div class="otp-demo">
+          <i class="fa-solid fa-circle-info"></i>
+          <div>
+            <small>Demo Code</small>
+            <strong id="otpDemoCode">------</strong>
+          </div>
+        </div>
+        <div class="otp-inputs" id="otpInputs">
+          <input type="text" maxlength="1" inputmode="numeric" />
+          <input type="text" maxlength="1" inputmode="numeric" />
+          <input type="text" maxlength="1" inputmode="numeric" />
+          <input type="text" maxlength="1" inputmode="numeric" />
+          <input type="text" maxlength="1" inputmode="numeric" />
+          <input type="text" maxlength="1" inputmode="numeric" />
+        </div>
+        <small class="error-msg" id="otpError"></small>
+        <div class="otp-timer">
+          <span>Code expires in <strong id="otpTimer">60s</strong></span>
+        </div>
+        <button class="btn btn-primary btn-block" id="otpVerifyBtn">
+          Verify & Continue
+        </button>
+        <button class="btn btn-ghost btn-block" id="otpResendBtn" disabled>
+          Resend Code
+        </button>
+        <button class="btn btn-ghost btn-block" id="otpCancelBtn">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/auth.js"></script>
+      <script src="assets/js/animations.js"></script>
+  </body>
+</html>

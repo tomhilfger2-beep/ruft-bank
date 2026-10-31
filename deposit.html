@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deposits — RUFT Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main">
+        <header class="topbar" id="topbar"></header>
+        <main class="content">
+          <div class="page-head">
+            <div>
+              <h1>Deposits</h1>
+              <p>Grow your savings with competitive interest rates.</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head">
+                <h3>
+                  <i class="fa-solid fa-calculator"></i> Deposit Calculator
+                </h3>
+              </div>
+              <form id="depCalcForm">
+                <div class="form-group">
+                  <label>Principal ($)</label>
+                  <input type="number" id="dcPrincipal" value="5000" />
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Annual Rate (%)</label>
+                    <input type="number" id="dcRate" value="6.5" step="0.1" />
+                  </div>
+                  <div class="form-group">
+                    <label>Term (months)</label>
+                    <input type="number" id="dcTerm" value="12" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Compounding</label>
+                  <select id="dcCompound">
+                    <option value="12">Monthly</option>
+                    <option value="4">Quarterly</option>
+                    <option value="1">Yearly</option>
+                  </select>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-block"
+                  id="calcDepBtn"
+                >
+                  Calculate
+                </button>
+              </form>
+              <div class="calc-result" id="depResult">
+                <div>
+                  <small>Interest Earned</small
+                  ><strong id="drInterest">$0.00</strong>
+                </div>
+                <div>
+                  <small>Final Amount</small><strong id="drFinal">$0.00</strong>
+                </div>
+                <div>
+                  <small>Effective APY</small><strong id="drApy">0%</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-piggy-bank"></i> Open a Deposit</h3>
+              </div>
+              <form id="openDepForm">
+                <div class="form-group">
+                  <label>Deposit Plan</label>
+                  <select id="odPlan">
+                    <option>RUFT Saver 6M — 5.5%</option>
+                    <option>RUFT Growth 12M — 6.5%</option>
+                    <option>RUFT Premium 24M — 7.8%</option>
+                    <option>RUFT Elite 36M — 8.5%</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Amount</label>
+                  <input type="number" id="odAmount" placeholder="1000" />
+                </div>
+                <div class="form-group">
+                  <label>Currency</label>
+                  <select id="odCurrency">
+                    <option>USD</option>
+                    <option>EUR</option>
+                    <option>UZS</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  Open Deposit
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3><i class="fa-solid fa-vault"></i> My Deposits</h3>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Plan</th>
+                    <th>Principal</th>
+                    <th>Rate</th>
+                    <th>Maturity</th>
+                    <th>Interest</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="myDeposits"></tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/deposit.js"></script>
+      <script src="assets/js/animations.js"></script>
+  </body>
+</html>

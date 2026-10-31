@@ -1,0 +1,56 @@
+/* =====================================================
+   LOGIN 3D — faqat login.html uchun (yangi fayl)
+   ===================================================== */
+.l3d-scene { position: absolute; top: 96px; right: 24px; width: 340px; height: 290px; perspective: 1000px; pointer-events: none; z-index: 0; }
+.l3d-stack { position: absolute; inset: 0; transform-style: preserve-3d;
+  transform: rotateX(calc(10deg + var(--rx, 0deg))) rotateY(calc(-20deg + var(--ry, 0deg))); transition: transform .2s linear;
+  animation: l3dIn 1.2s .2s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes l3dIn { from { opacity: 0; transform: rotateX(50deg) rotateY(-70deg) scale(.6); } }
+
+.l3d-card { position: absolute; width: 230px; height: 144px; border-radius: 16px; padding: 14px 16px; color: #fff;
+  display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.25); box-shadow: 0 24px 40px -10px rgba(0,0,0,.45);
+  animation: l3dBob 6s ease-in-out infinite; }
+.l3d-card::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.3) 48%, transparent 66%); background-size: 260% 100%; animation: l3dSheen 5s ease-in-out infinite; }
+@keyframes l3dBob { 50% { translate: 0 -12px; } }
+@keyframes l3dSheen { 0% { background-position: 130% 0; } 55%, 100% { background-position: -80% 0; } }
+.l3d-chip { width: 32px; height: 24px; border-radius: 5px; background: linear-gradient(135deg, #fde68a, #f59e0b); }
+.l3d-card b { position: absolute; top: 14px; right: 16px; font: 800 .95rem "Plus Jakarta Sans", sans-serif; letter-spacing: 2px; }
+.l3d-card em { font: 600 .85rem "Space Grotesk", monospace; letter-spacing: 2px; font-style: normal; }
+.l3d-card.c-humo { left: 0; top: 124px; transform: translateZ(0); background: linear-gradient(135deg, #064e3b, #0f9d8a 60%, #34d399 130%); animation-delay: -1s; }
+.l3d-card.c-uz   { left: 50px; top: 66px; transform: translateZ(55px); background: linear-gradient(135deg, #0b1d5c, #2563eb 60%, #38bdf8 130%); animation-delay: -3s; }
+.l3d-card.c-visa { left: 100px; top: 8px; transform: translateZ(110px); background: linear-gradient(135deg, #141a5c, #3b4fd8 60%, #a78bfa 130%); animation-delay: -5s; }
+
+.l3d-shape { position: absolute; perspective: 700px; z-index: 1;
+  translate: calc(var(--px, 0) * var(--d, 20) * 1px) calc(var(--py, 0) * var(--d, 20) * 1px); transition: translate .25s ease-out;
+  animation: l3dFloat 7s ease-in-out infinite; animation-delay: var(--delay, 0s); }
+@keyframes l3dFloat { 50% { transform: translateY(-16px); } }
+.l3d-cube { width: 46px; height: 46px; position: relative; transform-style: preserve-3d; animation: l3dCube 14s linear infinite; }
+.l3d-cube i { position: absolute; inset: 0; border: 1.5px solid rgba(255,255,255,.6); background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(236,72,153,.35)); box-shadow: inset 0 0 16px rgba(255,255,255,.25); }
+.l3d-cube i:nth-child(1) { transform: translateZ(23px); }
+.l3d-cube i:nth-child(2) { transform: rotateY(180deg) translateZ(23px); }
+.l3d-cube i:nth-child(3) { transform: rotateY(90deg) translateZ(23px); }
+.l3d-cube i:nth-child(4) { transform: rotateY(-90deg) translateZ(23px); }
+.l3d-cube i:nth-child(5) { transform: rotateX(90deg) translateZ(23px); }
+.l3d-cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(23px); }
+@keyframes l3dCube { to { transform: rotateX(360deg) rotateY(360deg); } }
+.l3d-coin { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font: 800 1.1rem "Space Grotesk", sans-serif; color: #92400e;
+  background: radial-gradient(circle at 30% 30%, #fde68a, #f59e0b 60%, #b45309); box-shadow: 0 0 0 3px rgba(180,83,9,.35), 0 10px 26px rgba(245,158,11,.45); animation: l3dCoin 5s linear infinite; }
+@keyframes l3dCoin { to { transform: rotateY(360deg); } }
+.l3d-ring { position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%; border: 1.5px dashed rgba(255,255,255,.35); animation: l3dRing 14s linear infinite; }
+@keyframes l3dRing { from { transform: rotateX(72deg) rotateZ(0); } to { transform: rotateX(72deg) rotateZ(360deg); } }
+
+/* forma: sichqoncha bilan yengil 3D egilish (transform — mavjud animatsiya bilan to'qnashmaydi) */
+.auth-form-card { transform: perspective(1200px) rotateX(var(--frx, 0deg)) rotateY(var(--fry, 0deg)); transition: transform .25s ease-out; }
+.auth-form-card .form-group { transition: transform .3s; }
+.auth-form-card .form-group:focus-within { transform: translateX(4px); }
+.auth-form-card .form-group:focus-within label { color: var(--primary); }
+.auth-form-card::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(500px circle at var(--gx, 50%) var(--gy, 50%), rgba(99,102,241,.12), transparent 45%); }
+.auth-form-card.l3d-hover::before { opacity: 1; }
+
+@media (max-width: 1100px), (max-height: 700px) { .l3d-scene { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .l3d-stack, .l3d-card, .l3d-card::after, .l3d-shape, .l3d-cube, .l3d-coin, .l3d-ring { animation: none !important; }
+}

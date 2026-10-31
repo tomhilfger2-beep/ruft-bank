@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RUFTbank — Add Card</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="dark">
+    <div class="app-shell">
+      <aside class="sidebar glass" id="sidebar"></aside>
+      <main class="main">
+        <header class="topbar glass">
+          <button class="icon-btn" id="menuToggle">☰</button>
+          <div class="search">
+            <span>🔍</span><input placeholder="Search..." />
+          </div>
+          <div class="topbar-right">
+            <button
+              class="icon-btn"
+              onclick="location.href = 'notifications.html'"
+            >
+              🔔
+            </button>
+            <div class="avatar-chip" onclick="location.href = 'profile.html'">
+              <div class="avatar" id="topAvatar">U</div>
+              <span id="topName">User</span>
+            </div>
+          </div>
+        </header>
+        <section class="content page-fade">
+          <div class="page-head">
+            <div>
+              <h1>Add New Card</h1>
+              <p class="muted">Enter your card details securely</p>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="panel glass">
+              <form id="addCardForm" autocomplete="off">
+                <div class="field">
+                  <label>Card Holder Name</label>
+                  <div class="input-wrap">
+                    <span class="input-ico">👤</span
+                    ><input
+                      type="text"
+                      id="acHolder"
+                      placeholder="JOHN DOE"
+                      required
+                    />
+                  </div>
+                  <small class="err" data-err="acHolder"></small>
+                </div>
+                <div class="field">
+                  <label>Card Number (16 digits)</label>
+                  <div class="input-wrap">
+                    <span class="input-ico">💳</span
+                    ><input
+                      type="text"
+                      id="acNumber"
+                      placeholder="1234 5678 9012 3456"
+                      maxlength="19"
+                      required
+                    />
+                  </div>
+                  <small class="err" data-err="acNumber"></small>
+                </div>
+                <div class="row-2">
+                  <div class="field">
+                    <label>Expiry (MM/YY)</label>
+                    <div class="input-wrap">
+                      <span class="input-ico">📅</span
+                      ><input
+                        type="text"
+                        id="acExpiry"
+                        placeholder="12/28"
+                        maxlength="5"
+                        required
+                      />
+                    </div>
+                    <small class="err" data-err="acExpiry"></small>
+                  </div>
+                  <div class="field">
+                    <label>CVV (3 digits)</label>
+                    <div class="input-wrap">
+                      <span class="input-ico">🔒</span
+                      ><input
+                        type="password"
+                        id="acCvv"
+                        placeholder="•••"
+                        maxlength="3"
+                        required
+                      />
+                    </div>
+                    <small class="err" data-err="acCvv"></small>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Card Type</label>
+                  <div class="radio-group">
+                    <label class="radio-card"
+                      ><input
+                        type="radio"
+                        name="acType"
+                        value="Visa"
+                        checked
+                      /><span class="rc-inner">VISA</span></label
+                    >
+                    <label class="radio-card"
+                      ><input
+                        type="radio"
+                        name="acType"
+                        value="MasterCard"
+                      /><span class="rc-inner">MasterCard</span></label
+                    >
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button
+                    type="button"
+                    class="btn btn-ghost ripple"
+                    onclick="history.back()"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary ripple">
+                    Save Card
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="panel glass preview-panel">
+              <h3>Live Preview</h3>
+              <div class="card-3d-wrap">
+                <div class="bank-card visa" id="previewCard">
+                  <div class="bc-top">
+                    <span class="bc-chip"></span
+                    ><span class="bc-brand">VISA</span>
+                  </div>
+                  <div class="bc-number" id="pvNumber">•••• •••• •••• ••••</div>
+                  <div class="bc-bot">
+                    <div>
+                      <small>Card Holder</small>
+                      <div id="pvHolder">YOUR NAME</div>
+                    </div>
+                    <div>
+                      <small>Expires</small>
+                      <div id="pvExpiry">MM/YY</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+    <div id="modalRoot"></div>
+    <script src="./assets/js/app.js"></script>
+      <script src="assets/js/animations.js"></script>
+  </body>
+</html>

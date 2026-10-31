@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cards — RUFT Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/cards.css" />
+    <link rel="stylesheet" href="assets/css/brands.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/cards3d.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main">
+        <header class="topbar" id="topbar"></header>
+        <main class="content">
+          <div class="cards-header">
+            <div class="cards-header-left">
+              <h1>My Cards 💳</h1>
+              <p>Manage your premium cards</p>
+            </div>
+            <button class="btn-add-card" id="openModalBtn">
+              <i class="fa-solid fa-plus"></i>
+              <span>Add New Card</span>
+            </button>
+          </div>
+
+          <div class="cards-grid" id="cardsGrid"></div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Add Card Modal -->
+    <div class="modal-overlay" id="addCardModal">
+      <div class="modal-container">
+        <div class="modal-left">
+          <div class="modal-header">
+            <h2>Add New Card</h2>
+            <p>Enter your card details securely</p>
+          </div>
+          <form id="cardForm" class="card-form">
+            <div class="form-group">
+              <label>Card Holder Name</label>
+              <input
+                type="text"
+                id="cardHolder"
+                placeholder="JOHN DOE"
+                autocomplete="off"
+              />
+              <span class="error" id="holderError"></span>
+            </div>
+            <div class="form-group">
+              <label>Card Number</label>
+              <input
+                type="text"
+                id="cardNumber"
+                placeholder="1234 5678 9012 3456"
+                maxlength="19"
+                autocomplete="off"
+              />
+              <span class="error" id="numberError"></span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Expiry Date</label>
+                <input
+                  type="text"
+                  id="cardExpiry"
+                  placeholder="MM/YY"
+                  maxlength="5"
+                  autocomplete="off"
+                />
+                <span class="error" id="expiryError"></span>
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input
+                  type="password"
+                  id="cardCVV"
+                  placeholder="123"
+                  maxlength="3"
+                  autocomplete="off"
+                />
+                <span class="error" id="cvvError"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Card Type</label>
+              <div class="card-type-selector">
+                <label class="type-option" data-type="humo">
+                  <span class="mini-wm humo">HUMO</span>
+                </label>
+                <label class="type-option" data-type="uzcard">
+                  <span class="mini-wm uzcard">UZCARD</span>
+                </label>
+                <label class="type-option active" data-type="visa">
+                  <i class="fa-brands fa-cc-visa"></i>
+                  <span>Visa</span>
+                </label>
+                <label class="type-option" data-type="mastercard">
+                  <i class="fa-brands fa-cc-mastercard"></i>
+                  <span>MasterCard</span>
+                </label>
+              </div>
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn-cancel" id="cancelBtn">
+                Cancel
+              </button>
+              <button type="submit" class="btn-save" id="saveBtn" disabled>
+                Save Card
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-right">
+          <div class="preview-label">Live Preview</div>
+          <div class="preview-card" id="previewCard">
+            <div class="preview-chip"></div>
+            <div class="preview-number" id="previewNumber">
+              •••• •••• •••• ••••
+            </div>
+            <div class="preview-bottom">
+              <div class="preview-holder">
+                <small>CARD HOLDER</small>
+                <span id="previewHolder">YOUR NAME</span>
+              </div>
+              <div class="preview-expiry">
+                <small>EXPIRES</small>
+                <span id="previewExpiry">MM/YY</span>
+              </div>
+              <div class="preview-brand" id="previewBrand">
+                <i class="fa-brands fa-cc-visa"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Dropdown -->
+    <div class="settings-dropdown" id="settingsDropdown">
+      <button class="dropdown-item" data-action="rename">
+        <i class="fa-solid fa-pen"></i> Rename Card
+      </button>
+      <button class="dropdown-item" data-action="replace">
+        <i class="fa-solid fa-rotate"></i> Replace Card
+      </button>
+      <button class="dropdown-item" data-action="color">
+        <i class="fa-solid fa-palette"></i> Change Color
+      </button>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/cards.js"></script>
+      <script src="assets/js/animations.js"></script>
+    <script src="assets/js/cards3d.js"></script>
+  </body>
+</html>

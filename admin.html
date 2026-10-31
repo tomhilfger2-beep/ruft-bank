@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — RUFT Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/i18n.css" />
+    <script src="assets/js/i18n-dict.js"></script>
+    <script src="assets/js/i18n.js"></script>
+  </head>
+  <body class="app-body admin-body">
+    <div class="app-shell">
+      <aside class="sidebar admin-sidebar" id="sidebar"></aside>
+      <div class="main">
+        <header class="topbar" id="topbar"></header>
+        <main class="content">
+          <div class="page-head">
+            <div>
+              <h1><i class="fa-solid fa-user-shield"></i> Admin Panel</h1>
+              <p>System overview and management.</p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fa-solid fa-download"></i> Export Report
+              </button>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-card gradient-1">
+              <div class="stat-top"><i class="fa-solid fa-users"></i></div>
+              <small>Total Users</small>
+              <h2 id="adUsers">0</h2>
+              <span class="stat-foot">Active accounts</span>
+            </div>
+            <div class="stat-card gradient-2">
+              <div class="stat-top">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+              </div>
+              <small>Transactions</small>
+              <h2 id="adTx">0</h2>
+              <span class="stat-foot">Last 30 days</span>
+            </div>
+            <div class="stat-card gradient-3">
+              <div class="stat-top">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <small>Cards Issued</small>
+              <h2 id="adCards">0</h2>
+              <span class="stat-foot">Active cards</span>
+            </div>
+            <div class="stat-card gradient-4">
+              <div class="stat-top">
+                <i class="fa-solid fa-sack-dollar"></i>
+              </div>
+              <small>Volume</small>
+              <h2 id="adVol">$0</h2>
+              <span class="stat-foot">Total processed</span>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head"><h3>User Growth</h3></div>
+              <div class="chart-wrap"><canvas id="adUsersChart"></canvas></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Transaction Volume</h3></div>
+              <div class="chart-wrap"><canvas id="adVolChart"></canvas></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3><i class="fa-solid fa-users-gear"></i> Registered Users</h3>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Joined</th>
+                    <th>Cards</th>
+                    <th>Balance</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="adUsersTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/admin.js"></script>
+      <script src="assets/js/animations.js"></script>
+  </body>
+</html>
